@@ -244,4 +244,5 @@ class AttendanceTest {
         assertEquals("NORMAL", Attendance.playerList.get(pid).ratingPlayer());
 
     }
+
 }

@@ -8,9 +8,7 @@ public class Attendance {
 
     public static Map<Integer, Player> playerList ;
 
-    public static final int[] WeekDayPoint = {1, 1, 3, 1, 1, 2, 2};
-
-    static Map<String, Integer> playerIDList = new HashMap<>();
+      static Map<String, Integer> playerIDList = new HashMap<>();
     static int idCnt = 0;
 
 
@@ -44,7 +42,7 @@ public class Attendance {
         int playerID=getPlayerID(playerName);
         dayIdx = getWeekNum(attendWeekDay);
         playerList.get(playerID).addDat(dayIdx);
-        playerList.get(playerID).setPoints(WeekDayPoint[dayIdx]);
+
 
 
     }
@@ -101,31 +99,22 @@ public class Attendance {
 
     public static void firePlayer() {
 
-        ArrayList<String> firedPlayer = new ArrayList<>();
-
         System.out.println();
         System.out.println("Removed player");
         System.out.println("==============");
 
         for (Player player : playerList.values()) {
             if(player.isFire()) System.out.println(player.getPlayerName());
-
-
         }
-
-
-
     }
 
 
     public static void ratingPlayer() {
 
         for (Player player : playerList.values()) {
-
             System.out.print("NAME : " + player.getPlayerName() + ", ");
             System.out.print("POINT : " + player.getPoints() + ", ");
             System.out.println("GRADE : " +  player.ratingPlayer());
-
         }
 
 

@@ -2,11 +2,12 @@ import java.util.ArrayList;
 
 public class Player {
 
-
+// 정책
     public static final int[] WeekDayPoint = {1, 1, 3, 1, 1, 2, 2};
     public static final int grade1_point=50;
     public static final int grade2_point=30;
     public static final String[] gradeTitle={"NORMAL","GOLD","SILVER"};
+       public static final Boolean[] fireGrade={true,false,false};
 
     private String playerName;
     private Integer points;
@@ -29,12 +30,12 @@ public class Player {
         return playerName;
     }
 
-    public int getDat(int dayIndex) {
-        return dat[dayIndex];
-    }
+
+
 
     public void addDat(int dayIndex) {
         this.dat[dayIndex]++;
+        this.setPoints(WeekDayPoint[dayIndex]);
     }
 
 
@@ -71,12 +72,28 @@ public class Player {
 
     }
 
+
+
+
+
+
+    public Boolean isFireGrade(){
+        return fireGrade[grade];
+    }
+
+    public Boolean isFireAttandance(){
+
+        if ( dat[2] == 0 && dat[5] == 0 && dat[6] == 0)  return true;
+        return false;
+    }
+
     public Boolean isFire() {
 
-        if (grade != 1 && grade != 2 && dat[2] == 0 && dat[5] == 0 && dat[6] == 0) {
+
+        if (isFireGrade() && isFireAttandance()) {
             fireflag=true;
         }
-
+//
         return fireflag;
     }
 
