@@ -62,7 +62,7 @@ public class Attendance {
         points[playerID] += WeekDayPoint[index];
     }
 
-    public static void input() {
+    public static void chechkingAttendance() {
         try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/attendance_weekday_500.txt"))) {
             for (int i = 0; i < 500; i++) {
                 String line = br.readLine();
@@ -105,7 +105,7 @@ public class Attendance {
             System.out.print("POINT : " + points[i] + ", ");
             System.out.print("GRADE : ");
 
-            System.out.print(gradeTitle[grade[i]]);
+            System.out.println(gradeTitle[grade[i]]);
 
         }
     }
@@ -122,7 +122,7 @@ public class Attendance {
     }
 
     public static void main(String[] args) {
-        input();
+        chechkingAttendance();
         addBonusPoint();
         ratingPlayer();
         firePlayer();
