@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="AttendanceTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2025-08-29T08:08:11.557Z" hostname="DESKTOP-5FBE16T" time="0.091">
+  <properties/>
+  <testcase name="chechkingAttendanceandBonus_daily()" classname="AttendanceTest" time="0.067"/>
+  <testcase name="chechkingAttendanceandBonus_daily2()" classname="AttendanceTest" time="0.002"/>
+  <testcase name="chechkingAttendanceandBonus_mon()" classname="AttendanceTest" time="0.0"/>
+  <testcase name="chechkingAttendanceandBonus_sat()" classname="AttendanceTest" time="0.001"/>
+  <testcase name="chechkingAttendanceandBonus_sun()" classname="AttendanceTest" time="0.001"/>
+  <testcase name="rating1()" classname="AttendanceTest" time="0.005"/>
+  <testcase name="rating2()" classname="AttendanceTest" time="0.001"/>
+  <testcase name="rating3()" classname="AttendanceTest" time="0.001"/>
+  <testcase name="chechkingAttendanceandBonus_sun2()" classname="AttendanceTest" time="0.002"/>
+  <system-out><![CDATA[
+Removed player
+==============
+Key
+
+Removed player
+==============
+Key
+NAME : John, POINT : 75, GRADE : GOLD
+NAME : John, POINT : 40, GRADE : SILVER
+NAME : John, POINT : 18, GRADE : NORMAL
+
+Removed player
+==============
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
