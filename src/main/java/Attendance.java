@@ -27,10 +27,26 @@ public class Attendance {
         return playerIDList.get(playerName);
     }
 
-    private static void addAttendancePoint(int playerID, String attendWeekDay) {
+
+    public Integer getPlayerPoint(int id){
+        return  points[id];
+    }
+
+    public static void addAttendancePoint(int playerID, String attendWeekDay) {
         int addPoint = 0;
         int index = 0;
 
+        index = getWeekNum(attendWeekDay, index);
+
+
+        if (index == 2) wed[playerID]++;
+        if (index > 4) weeken[playerID]++;
+        playerAttendanceCount[playerID][index]++;
+        points[playerID] += WeekDayPoint[index];
+
+    }
+
+    private static int getWeekNum(String attendWeekDay, int index) {
         switch (attendWeekDay) {
             case "monday":
                 index = 0;
@@ -54,12 +70,7 @@ public class Attendance {
                 index = 6;
                 break;
         }
-
-
-        if (index == 2) wed[playerID]++;
-        if (index > 4) weeken[playerID]++;
-        playerAttendanceCount[playerID][index]++;
-        points[playerID] += WeekDayPoint[index];
+        return index;
     }
 
     public static void chechkingAttendance() {
