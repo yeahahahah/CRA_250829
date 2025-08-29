@@ -9,20 +9,13 @@ public class Attendance {
     public static Map<Integer, Player> playerList ;
 
     public static final int[] WeekDayPoint = {1, 1, 3, 1, 1, 2, 2};
-    public static final int grade1_point=50;
-    public static final int grade2_point=30;
-    public static final String[] gradeTitle={"NORMAL","GOLD","SILVER"};
 
     static Map<String, Integer> playerIDList = new HashMap<>();
     static int idCnt = 0;
 
-    static int[][] playerAttendanceCount = new int[100][100];
-    static int[] points = new int[100];
-    static int[] grade = new int[100];
+
     static String[] playerName = new String[100];
 
-    static int[] wed = new int[100];
-    static int[] weeken = new int[100];
 
 
     public static Integer getPlayerID(String playerName) {
@@ -36,11 +29,8 @@ public class Attendance {
 
 
 
-    public Integer getPlayerPoint(int id){
-        return  points[id];
-    }
 
-    public Integer getPlayerPoint(String playerName){
+    public static Integer getPlayerPoint(String playerName){
 
         int id=getPlayerID(playerName);
        return playerList.get(id).getPoints();
@@ -48,28 +38,18 @@ public class Attendance {
     }
 
 
-
-
     public static void addAttendancePoint(String playerName, String attendWeekDay) {
-        int addPoint = 0;
-        int index = 0;
+
+        int dayIdx = 0;
         int playerID=getPlayerID(playerName);
-        index = getWeekNum(attendWeekDay);
-        playerList.get(playerID).addDat(index);
-        playerList.get(playerID).setPoints(WeekDayPoint[index]);
+        dayIdx = getWeekNum(attendWeekDay);
+        playerList.get(playerID).addDat(dayIdx);
+        playerList.get(playerID).setPoints(WeekDayPoint[dayIdx]);
 
 
     }
 
-    public static void addAttendancePoint(int playerID, String attendWeekDay) {
-        int addPoint = 0;
-        int index = 0;
 
-        index = getWeekNum(attendWeekDay);
-        playerAttendanceCount[playerID][index]++;
-        points[playerID] += WeekDayPoint[index];
-
-    }
 
     private static int getWeekNum(String attendWeekDay) {
         int index=0;
@@ -107,7 +87,7 @@ public class Attendance {
                 String[] parts = line.split("\\s+");
                 if (parts.length == 2) {
                     addAttendancePoint(parts[0], parts[1]);
-                // addAttendancePoint(getPlayerID(parts[0]), parts[1]);
+
                 }
             }
 
@@ -119,7 +99,7 @@ public class Attendance {
     }
 
 
-    private static void firePlayer() {
+    public static void firePlayer() {
 
         ArrayList<String> firedPlayer = new ArrayList<>();
 
@@ -127,45 +107,27 @@ public class Attendance {
         System.out.println("Removed player");
         System.out.println("==============");
 
-        for (int i = 1; i <=playerList.size(); i++) {
-            if(playerList.get(i).isFire()) System.out.println(playerList.get(i).getPlayerName());
+        for (Player player : playerList.values()) {
+            if(player.isFire()) System.out.println(player.getPlayerName());
+
 
         }
+
 
 
     }
 
-    private static void firePlayerold() {
 
-        ArrayList<String> firedPlayer = new ArrayList<>();
+    public static void ratingPlayer() {
 
-        System.out.println();
-        System.out.println("Removed player");
-        System.out.println("==============");
+        for (Player player : playerList.values()) {
 
-
-
-        for (int i = 1; i <= idCnt; i++) {
-            if (grade[i] != 1 && grade[i] != 2 && playerAttendanceCount[i][2] == 0 && playerAttendanceCount[i][5] == 0 && playerAttendanceCount[i][6] == 0) {
-                firedPlayer.add(playerName[i]);
-            }
-        }
-
-
-        for(int i=0;i<firedPlayer.size();i++){
-            System.out.println(firedPlayer.get(i));
-        }
-    }
-
-
-    private static void ratingPlayer() {
-
-        for (int i = 1; i <=playerList.size(); i++) {
-            System.out.print("NAME : " + playerList.get(i).getPlayerName() + ", ");
-            System.out.print("POINT : " + playerList.get(i).getPoints() + ", ");
-            System.out.println("GRADE : " +  playerList.get(i).ratingPlayer());
+            System.out.print("NAME : " + player.getPlayerName() + ", ");
+            System.out.print("POINT : " + player.getPoints() + ", ");
+            System.out.println("GRADE : " +  player.ratingPlayer());
 
         }
+
 
     }
 
@@ -173,9 +135,8 @@ public class Attendance {
 
 
     public static void addBonusPoint() {
-
-        for (int i = 1; i <=playerList.size(); i++) {
-            playerList.get(i).getBonus();
+        for (Player player : playerList.values()) {
+            player.getBonus();
         }
 
     }

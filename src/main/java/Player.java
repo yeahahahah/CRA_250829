@@ -2,16 +2,17 @@ import java.util.ArrayList;
 
 public class Player {
 
-    private String playerName;
-    private Integer points;
-    private Integer grade;
-    public int[] dat=new int[7];
-public boolean fireflag;
+
     public static final int[] WeekDayPoint = {1, 1, 3, 1, 1, 2, 2};
     public static final int grade1_point=50;
     public static final int grade2_point=30;
     public static final String[] gradeTitle={"NORMAL","GOLD","SILVER"};
 
+    private String playerName;
+    private Integer points;
+    private Integer grade;
+    public int[] dat=new int[7];
+    public boolean fireflag;
 
     public Player(String Name) {
         playerName=Name;
@@ -41,15 +42,6 @@ public boolean fireflag;
         return points;
     }
 
-    public Integer getGrade() {
-        return grade;
-    }
-
-    public void setGrade(Integer grade) {
-        this.grade = grade;
-    }
-
-
 
     public Integer getBonus() {
 
@@ -77,22 +69,18 @@ public boolean fireflag;
 
         return gradeTitle[grade];
 
-
     }
 
     public Boolean isFire() {
-
-
-
-
-
 
         if (grade != 1 && grade != 2 && dat[2] == 0 && dat[5] == 0 && dat[6] == 0) {
             fireflag=true;
         }
 
-
         return fireflag;
     }
+
+
+
 
 }
