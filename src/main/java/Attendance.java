@@ -1,6 +1,9 @@
 import java.io.*;
 import java.util.*;
 
+
+
+
 public class Attendance {
 
     public static final int[] WeekDayPoint = {1, 1, 3, 1, 1, 2, 2};
@@ -85,19 +88,27 @@ public class Attendance {
             }
 
 
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     private static void firePlayer() {
+
+        ArrayList<String> firedPlayer = new ArrayList<>();
+
         System.out.println();
         System.out.println("Removed player");
         System.out.println("==============");
         for (int i = 1; i <= idCnt; i++) {
             if (grade[i] != 1 && grade[i] != 2 && wed[i] == 0 && weeken[i] == 0) {
-                System.out.println(playerName[i]);
+                firedPlayer.add(playerName[i]);
             }
+        }
+
+        for(int i=0;i<firedPlayer.size();i++){
+            System.out.println(firedPlayer.get(i));
         }
     }
 
